@@ -124,13 +124,13 @@ func calculateRandomChecksum<T: Fooable>(foo: T) -> Int {
     return randomChecksum
 }
 
-var randomChecksum = 0
 let iterations = 1_000_000
 
 let benchmark = Benchmark(name: "HTTP Headers")
 
 // Single Element
 do {
+    var randomChecksum = 0
     try benchmark.start(name: "Single Element List")
     for _ in 0..<iterations {
         var foo = FooList()
@@ -138,10 +138,12 @@ do {
         randomChecksum += calculateRandomChecksum(foo: foo)
     }
     try benchmark.end()
+    print(randomChecksum)
 }
 
 // No List
 do {
+    var randomChecksum = 0
     try benchmark.start(name: "No List")
     for _ in 0..<iterations {
         var foo = FooElement()
@@ -149,10 +151,12 @@ do {
         randomChecksum += calculateRandomChecksum(foo: foo)
     }
     try benchmark.end()
+    print(randomChecksum)
 }
 
 // Tuple
 do {
+    var randomChecksum = 0
     try benchmark.start(name: "Tuple")
     for _ in 0..<iterations {
         var foo = FooTuple()
@@ -160,6 +164,7 @@ do {
         randomChecksum += calculateRandomChecksum(foo: foo)
     }
     try benchmark.end()
+    print(randomChecksum)
 }
 
-try benchmark.printResults()
+benchmark.printResults()
