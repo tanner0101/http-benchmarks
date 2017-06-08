@@ -138,7 +138,7 @@ do {
         randomChecksum += calculateRandomChecksum(foo: foo)
     }
     try benchmark.end()
-    print(randomChecksum)
+    print("Checksum: \(randomChecksum)")
 }
 
 // No List
@@ -151,7 +151,7 @@ do {
         randomChecksum += calculateRandomChecksum(foo: foo)
     }
     try benchmark.end()
-    print(randomChecksum)
+    print("Checksum: \(randomChecksum)")
 }
 
 // Tuple
@@ -164,7 +164,7 @@ do {
         randomChecksum += calculateRandomChecksum(foo: foo)
     }
     try benchmark.end()
-    print(randomChecksum)
+    print("Checksum: \(randomChecksum)")
 }
 
 benchmark.printResults()
